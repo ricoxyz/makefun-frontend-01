@@ -3,12 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0D0D0D">
+<meta name="description" content="make.fun — competitive bounties for developers and forecasters">
 <title>make.fun bounties</title>
+<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <script type="module" src="main.js"></script>
 </head>
 <body>
-<header><a href="#/">make.fun bounties</a></header>
-<main id="app"></main>
+<header class="header" role="banner">
+  <a href="#/" class="brand" aria-label="make.fun bounties home">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 2L4 8v16l12 6 12-6V8L16 2zm0 2.5L25.3 8.8 16 15.5 6.7 8.8 16 4.5z"/></svg>
+    <span class="brand-text">make.fun</span>
+  </a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <form class="search-form" role="search" aria-label="Search bounties">
+      <label for="search" class="visually-hidden">Search bounties</label>
+      <input type="search" id="search" name="q" placeholder="Search bounties…" autocomplete="off">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M21 21l-5.5-5.5M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>
+    </form>
+    <a href="#/profile/me" class="avatar-link" aria-label="Your profile">
+      <span class="avatar" aria-hidden="true">?</span>
+    </a>
+  </nav>
+</header>
+<main id="app" role="main"></main>
+<footer class="footer" role="contentinfo">
+  <p><a href="https://make.fun" target="_blank" rel="noopener">make.fun</a> · <a href="#/about" id="about-link">About</a> · <a href="#/api" id="api-link">API</a></p>
+</footer>
+<div id="offline-banner" class="offline-banner" hidden aria-live="polite">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.72 11.06L12 15.78 7.28 11.06 6 12.28 12 18.28 18 12.28 16.72 11.06zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  <span>You're offline — showing cached data</span>
+</div>
+<template id="skeleton-row">
+  <li class="board-row skeleton">
+    <div class="skeleton-title"></div>
+    <div class="skeleton-meta"></div>
+  </li>
+</template>
 </body>
 </html>

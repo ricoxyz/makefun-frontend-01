@@ -28,7 +28,30 @@ export function timeLeft(iso) {
   return `${minutes}m left`;
 }
 
+/** Returns object with text and state for live countdown */
+export function countdownInfo(iso) {
+  const ms = new Date(iso).getTime() - Date.now();
+  if (ms <= 0) return { text: 'ended', state: 'ended' };
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  if (days > 0) return { text: `${days}d ${hours}h`, state: 'live' };
+  if (hours > 0) return { text: `${hours}h ${minutes}m`, state: 'live' };
+  return { text: `${minutes}m`, state: 'live' };
+}
+
 /** A rate (0-1) as '0.123456' or '—'. */
 export function rank(value) {
   return value != null ? Number(value).toFixed(6) : '—';
+}
+
+/** Format a number with commas */
+export function formatNumber(n) {
+  return Number(n).toLocaleString('en-US');
+}
+
+/** Truncate text to max length */
+export function truncate(text, max = 100) {
+  if (text.length <= max) return text;
+  return text.slice(0, max - 1) + '…';
 }
